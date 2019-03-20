@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+	bool adutukar=true;
+	int n, i, j, temp;
+	int x[10];
+	i=1;
+
+	cout << "Masukkan jumlah angka: ";
+	cin >> n;
+
+	for(int a=1;a<n+1;a++){
+
+		cout << "Masukkan angka: ";
+		cin >> x[a];
+	}
+
+	while(i<n && adutukar){
+		j=1;
+		adutukar =false;
+		while(j<=(n-i)){
+			if (x[j]>x[j+1]){
+				adutukar= true;
+				temp=x[j];
+				x[j]=x[j+1];
+				x[j+1]=temp;
+        }
+			j++;
+		}
+		i++;
+        }
+     for(int k=1;k<n+1;k++){
+        cout<<x[k];
+     }
+
+	return 0;
+}
