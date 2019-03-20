@@ -1,0 +1,62 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+void lihat_data(int data[], int n)
+{
+ int i;
+ for (i=1;i<=n;i++)
+ cout<<data[i]<<" ";
+ cout<<"\n";
+}
+int partisi (int data[], int L, int R)
+{
+ int x,i,j,simpan;
+ i=L;
+ j=R;
+   while(1)
+   {
+   while(data[i]<data[L])
+     i=i+1;
+    while(data[j]>data[L])
+     j=j-1;
+    if (i<j)
+    {
+   simpan=data[i];
+    data[i]=data[j];
+   data[j]=simpan;
+    }
+   else
+      return j;
+   }
+}
+void quick_sort(int data[], int L, int R)
+{
+ int q;
+ if(L<R)
+ {
+  q=partisi(data,L,R);
+  quick_sort(data,L,q);
+  quick_sort(data, q+1,R);
+ }
+}
+int main()
+{
+ int i,j,jml,data[10];
+   cout<<"masukkan banyak data= ";cin>>jml;
+   for(i=1;i<=jml;i++)
+   {
+    cout<<"data ke-"<<i<<" = ";cin>>data[i];
+   }
+ cout<<"Data sebelum diurut: "<<endl;
+ for(j=1;j<=jml;j++)
+ {
+  cout<<data[j]<<" ";
+ }
+ quick_sort(data,1,jml);
+ cout<<endl;
+ cout<<endl;
+ cout<<"hasil pengurutan:\n";
+ lihat_data(data,jml);
+ getch();
+}
